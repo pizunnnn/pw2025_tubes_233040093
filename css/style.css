@@ -1,0 +1,40 @@
+/** LOGIN **/
+
+/* Latar belakang gradient biru */
+
+/* Kartu login */
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+/* Tombol login custom */
+.btn-login {
+    background: linear-gradient(to right, #4a90e2, #357ABD);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 25px;
+}
+
+.btn-login:hover {
+    background: linear-gradient(to right, #357ABD, #2b65b0);
+}
+
+/* Heading LOGIN dengan garis bawah biru */
+h2 {
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 3px;
+    background-color: #357ABD;
+    margin: 4px auto 0 auto;
+    border-radius: 2px;
+}
