@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
     if ($_FILES['ktp']['name']) {
         $ktp = $_FILES['ktp']['name'];
         $tmp = $_FILES['ktp']['tmp_name'];
-        move_uploaded_file($tmp, "uploads/" . $ktp);
+        move_uploaded_file($tmp, "images/" . $ktp);
     }
 
     $update = mysqli_query($conn, "UPDATE user SET nama_lengkap='$nama', email='$email', ktp='$ktp' WHERE id=$user_id");
@@ -61,9 +61,11 @@ if (isset($_POST['update'])) {
         </div>
         <div class="mb-3">
             <label class="form-label">Upload KTP</label>
-            <?php if (!empty($user['ktp'])): ?>
-                <p><img src="uploads/<?= $user['ktp'] ?>" width="150"></p>
-            <?php endif; ?>
+           <?php if (!empty($user['ktp']) && file_exists("images/" . $user['ktp'])): ?>
+    <p><img src="images/<?= $user['ktp'] ?>" width="150"></p>
+<?php else: ?>
+    <p class="text-danger">Gambar KTP belum tersedia atau tidak ditemukan.</p>
+<?php endif; ?>
             <input type="file" name="ktp" class="form-control">
         </div>
         <button type="submit" name="update" class="btn btn-primary">Simpan</button>

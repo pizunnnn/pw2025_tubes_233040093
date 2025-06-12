@@ -9,12 +9,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 }
 
 // Ambil data booking gabung dengan user dan mobil
-$query = mysqli_query($conn, "
-    SELECT booking.*, user.username, mobil.nama_mobil 
+$booking = mysqli_query($conn, "
+    SELECT booking.*, user.id AS user_id, user.username, mobil.nama_mobil 
     FROM booking 
     JOIN user ON booking.user_id = user.id 
-    JOIN mobil ON booking.mobil_id = mobil.id
-    ORDER BY booking.tanggal_booking DESC
+    JOIN mobil ON booking.mobil_id = mobil.id 
+    ORDER BY booking.created_at DESC
 ");
 ?>
 
@@ -39,7 +39,6 @@ $query = mysqli_query($conn, "
         </div>
     </nav>
 
-    <!-- Link kecil navigasi -->
     <div class="bg-white border-bottom py-2">
         <div class="container text-center">
             <a href="booking.php" class="text-decoration-none text-primary mx-3 small">Daftar Booking</a>
@@ -61,23 +60,32 @@ $query = mysqli_query($conn, "
                         <th>Mobil</th>
                         <th>Tanggal Booking</th>
                         <th>Catatan</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
-                    while ($row = mysqli_fetch_assoc($query)) :
+                    while ($row = mysqli_fetch_assoc($booking)) :
                     ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
-                            <td><?= htmlspecialchars($row['username']) ?></td>
+                            <td>
+                                <a href="detail_user.php?id=<?= $row['user_id'] ?>" class="text-decoration-none">
+                                    <?= htmlspecialchars($row['username']) ?>
+                                </a>
+                            </td>
                             <td><?= htmlspecialchars($row['nama_mobil']) ?></td>
-                            <td><?= htmlspecialchars($row['tanggal_booking']) ?></td>
+                            <td><?= htmlspecialchars(date('d-m-Y H:i', strtotime($row['created_at']))) ?></td>
                             <td><?= nl2br(htmlspecialchars($row['catatan'])) ?></td>
+                            <td class="text-center">
+                                <a href="detail_user.php?id=<?= $row['user_id'] ?>" class="btn btn-info btn-sm mb-1">Lihat User</a>
+                                <a href="konfirmasi_booking.php?id=<?= $row['id'] ?>" class="btn btn-success btn-sm mb-1" onclick="return confirm('Yakin ingin konfirmasi booking ini?')">Konfirmasi</a>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
-                    <?php if (mysqli_num_rows($query) == 0): ?>
-                        <tr><td colspan="5" class="text-center text-muted">Belum ada data booking.</td></tr>
+                    <?php if (mysqli_num_rows($booking) == 0): ?>
+                        <tr><td colspan="6" class="text-center text-muted">Belum ada data booking.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>

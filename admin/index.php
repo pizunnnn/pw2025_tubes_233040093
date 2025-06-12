@@ -8,11 +8,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     exit;
 }
     // Query booking
-$booking = mysqli_query($conn, "SELECT booking.*, user.username, mobil.nama_mobil 
+$booking = mysqli_query($conn, "
+    SELECT booking.*, user.username, mobil.nama_mobil 
     FROM booking 
     JOIN user ON booking.user_id = user.id 
     JOIN mobil ON booking.mobil_id = mobil.id 
-    ORDER BY booking.tanggal_booking DESC");
+    ORDER BY booking.created_at DESC
+");
 
 // Query peminjaman
 $peminjaman = mysqli_query($conn, "SELECT peminjaman.*, booking.id AS booking_id, user.username, mobil.nama_mobil 

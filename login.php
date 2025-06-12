@@ -50,9 +50,6 @@ if (isset($_POST['login'])) {
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control border-primary" required>
             </div>
-            <div class="text-end mb-3">
-                <a href="#" class="text-primary small">Forgot password?</a>
-            </div>
             <div class="d-grid">
                 <button type="submit" name="login" class="btn btn-primary btn-login">LOGIN</button>
             </div>

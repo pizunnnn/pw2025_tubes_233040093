@@ -62,7 +62,7 @@ $result = mysqli_query($conn, "SELECT * FROM mobil");
         <?php $no = 1; while ($mobil = mysqli_fetch_assoc($result)) : ?>
             <tr>
                 <td><?= $no++ ?></td>
-                <td><img src="../uploads/<?= $mobil['gambar'] ?>" width="100" style="object-fit: cover;"></td>
+                <td><img src="../images/<?= $mobil['gambar'] ?>" width="100" style="object-fit: cover;"></td>
                 <td><?= htmlspecialchars($mobil['nama_mobil']) ?></td>
                 <td><?= htmlspecialchars($mobil['merk']) ?></td>
                 <td><?= htmlspecialchars($mobil['tahun']) ?></td>
