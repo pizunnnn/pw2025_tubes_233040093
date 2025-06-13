@@ -14,7 +14,8 @@ if (isset($_POST['update'])) {
     $nama = $_POST['nama_mobil'];
     $merk = $_POST['merk'];
     $tahun = $_POST['tahun'];
-    $harga = preg_replace("/[^0-9]/", "", $harga_input);    
+    $harga_input = $_POST['harga'];
+    $harga = preg_replace("/[^0-9]/", "", $harga_input);
     $deskripsi = $_POST['deskripsi'];
 
     // Cek apakah ada gambar baru di-upload
@@ -42,7 +43,7 @@ if (isset($_POST['update'])) {
     }
 
     if ($update) {
-        echo "<script>alert('Data berhasil diperbarui'); window.location='dashboard.php';</script>";
+        echo "<script>alert('Data berhasil diperbarui'); window.location='index.php';</script>";
     }
 }
 ?>
@@ -57,6 +58,7 @@ if (isset($_POST['update'])) {
 <body class="bg-light">
 <div class="container mt-5" style="max-width: 600px;">
     <h2 class="mb-4 text-primary">Edit Data Mobil</h2>
+     <a href="index.php" class="btn btn-secondary mb-3">← Kembali</a>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Nama Mobil</label>
@@ -76,7 +78,7 @@ if (isset($_POST['update'])) {
         </div>
         <div class="mb-3">
             <label class="form-label">Gambar Saat Ini</label><br>
-            <img src="../uploads/<?= $data['gambar'] ?>" width="200" class="img-thumbnail">
+            <img src="../images/<?= $data['gambar'] ?>" width="200" class="img-thumbnail">
         </div>
         <div class="mb-3">
             <label class="form-label">Ganti Gambar (opsional)</label>

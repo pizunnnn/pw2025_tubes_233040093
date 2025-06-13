@@ -58,7 +58,7 @@ $peminjaman = mysqli_query($conn, "SELECT peminjaman.*, booking.id AS booking_id
     <!-- Konten utama -->
     <div class="container mt-5 text-center">
         <h1 class="fw-bold text-primary">Selamat Datang, Admin!</h1>
-        <p class="text-muted">Gunakan panel ini untuk mengelola data penyewaan mobil.</p>
+        <p class="text-muted">Selamat mengelola data.</p>
 
         <div class="row justify-content-center mt-4">
             <div class="col-md-4">

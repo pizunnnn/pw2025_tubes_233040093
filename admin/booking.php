@@ -49,7 +49,7 @@ $booking = mysqli_query($conn, "
 
     <div class="container py-5">
         <h2 class="text-center text-primary mb-4">Daftar Booking</h2>
-        <a href="index.php" class="btn btn-secondary mb-3">← Kembali ke Dashboard</a>
+        <a href="index.php" class="btn btn-secondary mb-3">← Kembali</a>
 
         <div class="table-responsive">
             <table class="table table-bordered table-hover bg-white">

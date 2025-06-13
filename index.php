@@ -2,11 +2,6 @@
 session_start();
 require 'koneksi.php';
 
-// Cek koneksi database
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
-
 // Cek apakah user sudah login dan berperan sebagai user
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'user') {
     header("Location: login.php");

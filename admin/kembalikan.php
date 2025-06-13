@@ -26,7 +26,7 @@ $mobil_id = $data['mobil_id'];
 // Update status di tabel peminjaman
 $update = mysqli_query($conn, "UPDATE peminjaman SET status = 'dikembalikan' WHERE id = $peminjaman_id");
 
-// (Opsional) Tambahkan logika jika ingin update status mobil tersedia kembali
+// Update status mobil tersedia kembali
 
 if ($update) {
     header("Location: peminjaman.php");

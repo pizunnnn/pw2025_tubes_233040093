@@ -42,7 +42,8 @@ $result = mysqli_query($conn, "SELECT * FROM mobil");
     </div>
 <div class="container py-5">
     <h2 class="mb-4">Data Mobil</h2>
-
+    
+     <a href="index.php" class="btn btn-secondary mb-3">← Kembali</a>
     <a href="tambah_mobil.php" class="btn btn-success mb-3">+ Tambah Mobil</a>
 
     <table class="table table-striped table-bordered align-middle">

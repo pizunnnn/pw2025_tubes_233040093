@@ -11,8 +11,8 @@ $id = $_GET['id'];
 // Hapus gambar terlebih dahulu
 $get = mysqli_query($conn, "SELECT gambar FROM mobil WHERE id = $id");
 $data = mysqli_fetch_assoc($get);
-if ($data && file_exists("../uploads/" . $data['gambar'])) {
-    unlink("../uploads/" . $data['gambar']);
+if ($data && file_exists("../images/" . $data['gambar'])) {
+    unlink("../images/" . $data['gambar']);
 }
 
 // Hapus dari database

@@ -44,6 +44,7 @@ $query = mysqli_query($conn, "SELECT p.*, u.username, m.nama_mobil
 
     <div class="container py-5">
         <h2 class="text-primary mb-4">Daftar Peminjaman & Pengembalian</h2>
+            <a href="index.php" class="btn btn-secondary mb-3">← Kembali</a>
         <table class="table table-bordered table-hover bg-white">
             <thead class="table-primary">
                 <tr>

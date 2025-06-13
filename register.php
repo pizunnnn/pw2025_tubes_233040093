@@ -14,15 +14,22 @@ if (isset($_POST['register'])) {
         $error = "Konfirmasi password tidak sesuai!";
     } else {
         // Cek apakah username sudah ada
-        $cek = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+        $cek = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
         if (mysqli_num_rows($cek) > 0) {
             $error = "Username sudah terdaftar!";
         } else {
             // Hash password
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+             // Pakai role 'admin' agar akun menjadi admin
+            //$role = 'admin';
+
+            // Pakai role 'user' agar akun menjadi user
+            //$role = 'user';
+
             // Simpan ke database
-            $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$passwordHash')";
+             $query = "INSERT INTO user (username, email, password, role) 
+                      VALUES ('$username', '$email', '$passwordHash', '$role')";
             if (mysqli_query($conn, $query)) {
                 $success = "Registrasi berhasil! Silakan login.";
             } else {
